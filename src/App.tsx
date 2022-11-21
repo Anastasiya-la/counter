@@ -49,7 +49,7 @@ function App() {
                       maxValue={maxValue}
                       setIsValueChanging={setIsValueChanging}/>
             <Counter countNumber={count} addNumber={addNumber} resetNumber={resetNumber} maxValue={maxValue}
-                     minValue={minValue} error={error} isSetClicked={isValueChanging}/>
+                     minValue={minValue} error={error} isValueChanging={isValueChanging}/>
         </div>
 
     );

@@ -4,13 +4,13 @@ type CounterBoardPropsType = {
     countNumber: number
     maxValue: number
     error: boolean
-    isSetClicked: boolean
+    isValueChanging: boolean
 }
 
 const CounterBoard = (props: CounterBoardPropsType) => {
     return (
         <div className={'counter-section'}>
-            {props.error ? <span>Incorrect Value!</span> : props.isSetClicked ?
+            {props.error ? <span>Incorrect Value!</span> : props.isValueChanging ?
                 <span>enter values and press 'set'</span> :
                 <span className={props.countNumber === props.maxValue ? 'button-max' : ''}>{props.countNumber}</span>
             }

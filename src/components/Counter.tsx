@@ -9,17 +9,19 @@ type CounterPropsType = {
     maxValue: number
     minValue: number
     error: boolean
-    isSetClicked: boolean
+    isValueChanging: boolean
 }
 
 const Counter = (props: CounterPropsType) => {
     return (
         <div className={'main-section'}>
             <CounterBoard countNumber={props.countNumber} maxValue={props.maxValue} error={props.error}
-                          isSetClicked={props.isSetClicked}/>
+                          isValueChanging={props.isValueChanging}/>
             <div className={'buttons-section'}>
-                <Button name={'inc'} callback={props.addNumber} disabled={props.countNumber === props.maxValue}/>
-                <Button name={'reset'} callback={props.resetNumber} disabled={props.countNumber === props.minValue}/>
+                <Button name={'inc'} callback={props.addNumber}
+                        disabled={props.countNumber === props.maxValue || props.isValueChanging}/>
+                <Button name={'reset'} callback={props.resetNumber}
+                        disabled={props.countNumber === props.minValue || props.isValueChanging}/>
             </div>
         </div>
     );

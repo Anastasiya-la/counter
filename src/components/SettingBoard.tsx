@@ -14,6 +14,7 @@ const SettingBoard = (props: SettingBoardType) => {
 
     const onChangeMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.setIsValueChanging(true);
+
         props.changeMaxValue(+e.currentTarget.value);
     }
 
