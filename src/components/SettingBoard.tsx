@@ -5,6 +5,7 @@ type SettingBoardType = {
     minValue: number
     changeMaxValue: (value: number) => void
     changeMinValue: (value: number) => void
+    setIsValueChanging: (value: boolean) => void
 
 }
 
@@ -12,10 +13,12 @@ const SettingBoard = (props: SettingBoardType) => {
 
 
     const onChangeMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.setIsValueChanging(true);
         props.changeMaxValue(+e.currentTarget.value);
     }
 
     const onChangeMinHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        props.setIsValueChanging(true);
         props.changeMinValue(+e.currentTarget.value);
     }
 

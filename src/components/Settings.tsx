@@ -6,6 +6,7 @@ type SettingsPropsType = {
     setValues: (min: number, max: number) => void
     minValue: number
     maxValue: number
+    setIsValueChanging: (value: boolean) => void
 }
 
 const Settings = (props: SettingsPropsType) => {
@@ -27,6 +28,7 @@ const Settings = (props: SettingsPropsType) => {
         localStorage.setItem('minValue', JSON.stringify(min))
         props.setValues(min, max)
     }
+
     return (
         <div className={"main-section"}>
             <SettingBoard
@@ -34,7 +36,9 @@ const Settings = (props: SettingsPropsType) => {
                 changeMaxValue={setMax}
                 changeMinValue={setMin}
                 minValue={min}
-                maxValue={max}/>
+                maxValue={max}
+                setIsValueChanging={props.setIsValueChanging}
+            />
             <div className={'buttons-section'}>
                 <Button name={'set'} callback={handleSetClicked}/>
             </div>

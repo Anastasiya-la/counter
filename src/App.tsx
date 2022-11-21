@@ -7,6 +7,8 @@ function App() {
     let [count, setCount] = useState<number>(0)
     let [maxValue, setMaxValue] = useState(5)
     let [minValue, setMinValue] = useState(0)
+    let [error, setError] = useState(false)
+    let [isValueChanging, setIsValueChanging] = useState(false)
 
     let addNumber = () => {
         if (count < maxValue) {
@@ -22,6 +24,7 @@ function App() {
     const setValues = (min: number, max: number) => {
         localStorage.setItem('counterMax', JSON.stringify(max))
         localStorage.setItem('counterMin', JSON.stringify(min))
+        setIsValueChanging(false)
         setMinValue(min)
         setMaxValue(max)
         setCount(min)
@@ -43,9 +46,10 @@ function App() {
         <div>
             <Settings setValues={setValues}
                       minValue={minValue}
-                      maxValue={maxValue}/>
+                      maxValue={maxValue}
+                      setIsValueChanging={setIsValueChanging}/>
             <Counter countNumber={count} addNumber={addNumber} resetNumber={resetNumber} maxValue={maxValue}
-                     minValue={minValue}/>
+                     minValue={minValue} error={error} isSetClicked={isValueChanging}/>
         </div>
 
     );
