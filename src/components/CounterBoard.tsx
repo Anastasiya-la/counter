@@ -10,7 +10,7 @@ type CounterBoardPropsType = {
 const CounterBoard = (props: CounterBoardPropsType) => {
     return (
         <div className={'counter-section'}>
-            {props.error ? <span>Incorrect Value!</span> : props.isValueChanging ?
+            {props.error ? <span className={'error-message'}>Incorrect Value!</span> : props.isValueChanging ?
                 <span>enter values and press 'set'</span> :
                 <span className={props.countNumber === props.maxValue ? 'button-max' : ''}>{props.countNumber}</span>
             }

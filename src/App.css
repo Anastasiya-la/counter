@@ -70,3 +70,15 @@ button {
     width: 80px;
 }
 
+.error-message {
+    color: red;
+}
+
+.error {
+    border: 3px solid darkred;
+    background-color: red;
+}
+
+.input-set:focus {
+    outline: none;
+}

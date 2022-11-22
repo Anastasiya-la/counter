@@ -7,6 +7,8 @@ type SettingsPropsType = {
     minValue: number
     maxValue: number
     setIsValueChanging: (value: boolean) => void
+    setError: (error: boolean) => void
+    error: boolean
 }
 
 const Settings = (props: SettingsPropsType) => {
@@ -20,6 +22,8 @@ const Settings = (props: SettingsPropsType) => {
 
         }
     }, [])
+
+
 // two states for min and max values locally
     const [min, setMin] = useState(props.minValue)
     const [max, setMax] = useState(props.maxValue)
@@ -38,9 +42,11 @@ const Settings = (props: SettingsPropsType) => {
                 minValue={min}
                 maxValue={max}
                 setIsValueChanging={props.setIsValueChanging}
+                setError={props.setError}
+                error={props.error}
             />
             <div className={'buttons-section'}>
-                <Button name={'set'} callback={handleSetClicked}/>
+                <Button name={'set'} callback={handleSetClicked} disabled={props.error}/>
             </div>
 
         </div>

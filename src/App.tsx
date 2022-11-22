@@ -47,7 +47,7 @@ function App() {
             <Settings setValues={setValues}
                       minValue={minValue}
                       maxValue={maxValue}
-                      setIsValueChanging={setIsValueChanging}/>
+                      setIsValueChanging={setIsValueChanging} setError={setError} error={error}/>
             <Counter countNumber={count} addNumber={addNumber} resetNumber={resetNumber} maxValue={maxValue}
                      minValue={minValue} error={error} isValueChanging={isValueChanging}/>
         </div>
