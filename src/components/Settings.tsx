@@ -33,6 +33,7 @@ const Settings = (props: SettingsPropsType) => {
         props.setValues(min, max)
     }
 
+
     return (
         <div className={"main-section"}>
             <SettingBoard

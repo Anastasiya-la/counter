@@ -10,7 +10,19 @@ function App() {
     let [error, setError] = useState(false)
     let [isValueChanging, setIsValueChanging] = useState(false)
 
-    let addNumber = () => {
+    useEffect(() => {
+        const counterMaxValue = localStorage.getItem('counterMax')
+        const counterMinValue = localStorage.getItem('counterMin')
+        if (counterMaxValue && counterMinValue) {
+            setMinValue(JSON.parse(counterMinValue))
+            setMaxValue(JSON.parse(counterMaxValue))
+            setCount(JSON.parse(counterMinValue))
+
+        }
+    }, [])
+
+
+    const addNumber = () => {
         if (count < maxValue) {
             setCount(++count);
         }
@@ -29,17 +41,6 @@ function App() {
         setMaxValue(max)
         setCount(min)
     }
-
-    useEffect(() => {
-        const counterMaxValue = localStorage.getItem('counterMax')
-        const counterMinValue = localStorage.getItem('counterMin')
-        if (counterMaxValue && counterMinValue) {
-            setMinValue(JSON.parse(counterMinValue))
-            setMaxValue(JSON.parse(counterMaxValue))
-            setCount(JSON.parse(counterMinValue))
-
-        }
-    }, [])
 
 
     return (

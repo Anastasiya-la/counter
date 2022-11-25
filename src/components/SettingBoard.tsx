@@ -1,4 +1,5 @@
 import React, {ChangeEvent, useEffect} from 'react';
+import SetValuesField from "./SetValuesField";
 
 type SettingBoardType = {
     maxValue: number
@@ -15,17 +16,20 @@ const SettingBoard = (props: SettingBoardType) => {
     const errorMax = props.maxValue < 1;
     const errorMin = props.minValue < 0;
     const error = props.minValue === props.maxValue || props.minValue > props.maxValue;
+
+
     useEffect(() => {
         const changeError = () => {
-            if (props.minValue < 0 || props.minValue === props.maxValue || props.maxValue < 1 || props.minValue > props.maxValue) {
+            if (errorMin || error || errorMax) {
                 props.setError(true)
             } else {
                 props.setError(false)
             }
         }
+
         changeError()
 
-    }, [props.minValue, props.maxValue])
+    }, [errorMax, errorMin, error, props])
 
     const onChangeMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         props.setIsValueChanging(true);
@@ -40,23 +44,15 @@ const SettingBoard = (props: SettingBoardType) => {
 
     return (
         <div className={'set-section'}>
-            <div className={'value'}>
-                <span>max value: </span>
-                <div>
-                    <input type={'number'} value={props.maxValue} onChange={onChangeMaxHandler}
-                           className={`input-set ${errorMax ? 'error' : '' || error ? 'error' : ''}`}/>
-
-
-                </div>
-            </div>
-            <div className={'value'}>
-                <span>start value: </span>
-                <input type={'number'} value={props.minValue} onChange={onChangeMinHandler}
-                       className={`input-set ${errorMin ? 'error' : '' || error ? 'error' : ''}`}/>
-            </div>
-
+            <SetValuesField title={'max value'} onChangeHandler={onChangeMaxHandler} error={error}
+                            inputValue={props.maxValue} errorValue={errorMax}/>
+            <SetValuesField title={'min value'} onChangeHandler={onChangeMinHandler} error={error}
+                            inputValue={props.minValue} errorValue={errorMin}/>
         </div>
+
     )
 }
 
+
 export default SettingBoard;
+
