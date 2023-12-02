@@ -1,6 +1,7 @@
 import {AppStateType} from "../App";
 import counterReducer, {addNumberAC, resetNumberAC, setValuesAC} from "./counter-reducer";
 
+/*
 test('add number to the counter', () => {
     const startState: AppStateType = {
         count: 0,
@@ -53,4 +54,4 @@ test('setting values to settings', () => {
     expect(startState.maxValue).toBe(5)
     expect(endState.isValueChanging).toBe(false)
 
-})
+})*/

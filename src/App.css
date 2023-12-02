@@ -6,10 +6,16 @@ button {
     background-color: rgb(105, 200, 406);
 }
 
+.counterBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .main-section {
     display: flex;
     flex-direction: column;
-    margin: 50px auto;
+    margin: 50px 50px;
     background-color: rgb(193, 162, 223);
     border: 2px solid blue;
     border-radius: 5px;

@@ -4,8 +4,9 @@ type AddNumberACType = ReturnType<typeof addNumberAC>
 type ResetNumberACType = ReturnType<typeof resetNumberAC>
 type SetValuesACType = ReturnType<typeof setValuesAC>
 type SetIsValueChangingACType = ReturnType<typeof setIsValueChangingAC>
+type SetValueFromLocalStorageACType = ReturnType<typeof setValueFromLocalStorageAC>
 
-type ActionsType = AddNumberACType | ResetNumberACType | SetValuesACType | SetIsValueChangingACType;
+type ActionsType = AddNumberACType | ResetNumberACType | SetValuesACType | SetIsValueChangingACType | SetValueFromLocalStorageACType;
 
 
 const initialState: AppStateType = {
@@ -14,15 +15,6 @@ const initialState: AppStateType = {
     minValue: 0,
     isValueChanging: false
 }
-
-/*
-const initialState: AppStateType = {
-    count: 0,
-    maxValue: 5,
-    minValue: 0,
-    isValueChanging: false
-}
-*/
 
 
 export const counterReducer = (state: AppStateType = initialState, action: ActionsType): AppStateType => {
@@ -45,6 +37,10 @@ export const counterReducer = (state: AppStateType = initialState, action: Actio
             }
         case 'SET-VALUE-CHANGING':
             return {...state, isValueChanging: true}
+        case "SET-VALUE-FROM-LOCAL-STORAGE":
+            return {
+                ...state, count: action.count
+            }
         default :
             return state;
 
@@ -77,5 +73,11 @@ export const setIsValueChangingAC = () => {
     } as const
 }
 
+export const setValueFromLocalStorageAC = (count: number) => {
+    return {
+        type: 'SET-VALUE-FROM-LOCAL-STORAGE',
+        count: count
+    } as const
+}
 
 export default counterReducer;

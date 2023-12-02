@@ -18,6 +18,8 @@ const SettingBoard = (props: SettingBoardType) => {
     const error = props.minValue === props.maxValue || props.minValue > props.maxValue;
 
 
+
+
     useEffect(() => {
         const changeError = () => {
             if (errorMin || error || errorMax) {
